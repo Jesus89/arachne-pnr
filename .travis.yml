@@ -1,6 +1,6 @@
 sudo: required
 dist: trusty
-script: make ICEBOX=/usr/share/fpga-icestorm/chipdb test
+script: make ICEBOX=`pwd`/chipdb test
 language: cpp
 addons:
   apt:
@@ -16,6 +16,8 @@ before_install:
   - sudo add-apt-repository -y ppa:saltmakrell/ppa
   - sudo apt-get -y update
   - sudo apt-get -y install yosys fpga-icestorm
+  - wget https://github.com/FPGAwars/toolchain-icestorm/releases/download/v1.10.2/icebox-chipdb.tar.gz
+  - tar -zxvf icebox-chipdb.tar.gz
 os: linux
 compiler:
   - gcc
